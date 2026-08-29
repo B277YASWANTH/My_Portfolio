@@ -1,0 +1,3566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BURRI YASWANTH KUMAR | Portfolio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+/* =====================================================
+   ROOT
+===================================================== */
+
+:root{
+    --bg:#080808;
+    --black:#050505;
+    --panel:#111111;
+    --panel2:#171717;
+    --white:#ffffff;
+    --muted:#b6b6b6;
+
+    --red:#e50914;
+    --red2:#ff1e2d;
+    --gold:#d4af37;
+    --gold2:#ffd75a;
+
+    --line:rgba(212,175,55,.22);
+
+    --shadow:
+        0 30px 80px rgba(0,0,0,.55);
+}
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+    font-family:'Outfit',sans-serif;
+}
+
+body{
+    background:
+        radial-gradient(circle at 10% 10%,rgba(229,9,20,.12),transparent 25%),
+        radial-gradient(circle at 90% 20%,rgba(212,175,55,.09),transparent 25%),
+        #050505;
+
+    color:white;
+    overflow-x:hidden;
+    cursor: none; /* Hide default cursor */
+}
+
+/* Ensure interactive elements don't show default cursor */
+a, button, .btn, .card, .focus-card, .skill-card, .project-card, .edu-card, .timeline-card {
+    cursor: none;
+}
+
+
+/* =====================================================
+   COMIC BACKGROUND
+===================================================== */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+
+    background-image:
+        radial-gradient(circle,rgba(255,255,255,.08) 1px,transparent 1px);
+
+    background-size:22px 22px;
+
+    opacity:.18;
+    pointer-events:none;
+
+    z-index:-5;
+}
+
+
+/* =====================================================
+   DECORATIVE ORBS
+===================================================== */
+
+.decor-orb{
+    position:fixed;
+    width:330px;
+    height:330px;
+    border-radius:50%;
+    filter:blur(100px);
+    opacity:.22;
+    z-index:-2;
+
+    animation:orbMove 10s ease-in-out infinite alternate;
+}
+
+.decor-orb.one{
+    background:var(--red);
+    top:5%;
+    left:-10%;
+}
+
+.decor-orb.two{
+    background:var(--gold);
+    top:25%;
+    right:-10%;
+    animation-delay:2s;
+}
+
+.decor-orb.three{
+    background:var(--red);
+    bottom:-10%;
+    left:40%;
+    animation-delay:4s;
+}
+
+@keyframes orbMove{
+    from{
+        transform:translate(0,0) scale(1);
+    }
+
+    to{
+        transform:translate(50px,-40px) scale(1.15);
+    }
+}
+
+
+/* =====================================================
+   CURSOR
+===================================================== */
+
+.cursor-dot{
+    position:fixed;
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:var(--gold);
+    pointer-events:none;
+    z-index:9999;
+    transform: translate(-50%,-50%);
+    box-shadow: 0 0 15px var(--gold);
+    left: -100px; /* Start off-screen */
+}
+
+.cursor-ring{
+    position:fixed;
+    width:38px;
+    height:38px;
+    border:2px solid rgba(229,9,20,.7);
+    border-radius:50%;
+    pointer-events:none;
+    z-index:9998;
+    transform: translate(-50%,-50%);
+    transition: width .2s, height .2s, border-color .2s, background .2s;
+    left: -100px; /* Start off-screen */
+}
+
+.cursor-ring.active{
+    width:65px;
+    height:65px;
+    border-color:var(--gold);
+    background: rgba(212,175,55,0.1);
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+
+    z-index:1000;
+
+    padding:15px 7%;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    background:rgba(5,5,5,.88);
+
+    border-bottom:1px solid rgba(212,175,55,.25);
+
+    backdrop-filter:blur(18px);
+
+    box-shadow:
+        0 10px 40px rgba(0,0,0,.5);
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    color:white;
+
+    font-weight:900;
+    font-size:1.1rem;
+}
+
+.logo-mark{
+    width:44px;
+    height:44px;
+
+    display:grid;
+    place-items:center;
+
+    color:white;
+
+    background:
+        linear-gradient(135deg,var(--red),#700000);
+
+    border:2px solid var(--gold);
+
+    transform:rotate(-5deg);
+
+    box-shadow:
+        5px 5px 0 var(--gold);
+}
+
+.logo span{
+    color:var(--gold2);
+}
+
+nav ul{
+    display:flex;
+    gap:24px;
+    list-style:none;
+}
+
+nav a{
+    color:#ddd;
+
+    text-decoration:none;
+
+    font-size:.82rem;
+    font-weight:800;
+
+    text-transform:uppercase;
+
+    letter-spacing:.6px;
+
+    position:relative;
+
+    transition:.3s;
+}
+
+nav a::after{
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    bottom:-8px;
+
+    width:0;
+    height:3px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--red),
+            var(--gold)
+        );
+
+    transition:.35s;
+}
+
+nav a:hover{
+    color:var(--gold2);
+}
+
+nav a:hover::after{
+    width:100%;
+}
+
+
+/* =====================================================
+   SECTION
+===================================================== */
+
+section{
+    padding:105px 7%;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+    min-height:100vh;
+
+    padding-top:125px;
+
+    display:grid;
+
+    grid-template-columns:
+        minmax(0,1.05fr)
+        minmax(360px,.75fr);
+
+    align-items:center;
+
+    gap:35px;
+
+    position:relative;
+}
+
+
+/* =====================================================
+   HERO CONTENT / NAME BOX
+===================================================== */
+
+.hero-content{
+
+    position:relative;
+
+    padding:45px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #111111,
+            #080808
+        );
+
+    border:
+
+        1px solid
+        rgba(212,175,55,.25);
+
+    border-left:
+
+        6px solid
+        var(--red);
+
+    box-shadow:
+
+        14px 14px 0
+        rgba(212,175,55,.15),
+
+        0 30px 90px
+        rgba(0,0,0,.55);
+
+    overflow:hidden;
+
+    clip-path:
+        polygon(
+            0 0,
+            97% 0,
+            100% 7%,
+            100% 100%,
+            3% 100%,
+            0 94%
+        );
+}
+
+
+/* comic shine */
+
+.hero-content::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:400px;
+    height:400px;
+
+    right:-180px;
+    top:-180px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(229,9,20,.30),
+            transparent 70%
+        );
+
+    pointer-events:none;
+}
+
+
+/* gold diagonal */
+
+.hero-content::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:200%;
+    height:2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--gold),
+            transparent
+        );
+
+    transform:
+        rotate(-25deg);
+
+    left:-50%;
+    top:35%;
+
+    opacity:.25;
+}
+
+
+/* =====================================================
+   HERO LABEL
+===================================================== */
+
+.hero-label{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:10px 16px;
+
+    background:#090909;
+
+    color:var(--gold2);
+
+    border:
+
+        1px solid
+        rgba(212,175,55,.4);
+
+    border-left:
+
+        4px solid
+        var(--red);
+
+    font-weight:900;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+
+    margin-bottom:24px;
+
+    box-shadow:
+        5px 5px 0
+        rgba(229,9,20,.35);
+}
+
+.hero-label i{
+    color:var(--red2);
+}
+
+
+/* =====================================================
+   HERO NAME
+===================================================== */
+
+.hero h1{
+
+    font-size:
+        clamp(
+            2.8rem,
+            5vw,
+            5.2rem
+        );
+
+    line-height:.95;
+
+    letter-spacing:-2px;
+
+    font-weight:900;
+
+    text-transform:uppercase;
+
+    margin-bottom:20px;
+}
+
+.hero h1 span{
+
+    display:block;
+
+    color:var(--gold2);
+
+    text-shadow:
+
+        4px 4px 0
+        var(--red),
+
+        8px 8px 0
+        #000;
+
+}
+
+
+/* =====================================================
+   HERO SUBTITLE
+===================================================== */
+
+.hero h3{
+
+    color:#eee;
+
+    font-size:1.2rem;
+
+    margin-bottom:18px;
+
+    letter-spacing:.5px;
+}
+
+.hero h3::first-letter{
+    color:var(--red);
+}
+
+
+/* =====================================================
+   HERO DESCRIPTION
+===================================================== */
+
+.hero p{
+
+    max-width:700px;
+
+    color:#bdbdbd;
+
+    line-height:1.8;
+
+    margin-bottom:28px;
+}
+
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+
+.hero-actions{
+
+    display:flex;
+
+    gap:12px;
+
+    flex-wrap:wrap;
+}
+
+.btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:9px;
+
+    padding:14px 21px;
+
+    color:white;
+
+    text-decoration:none;
+
+    font-weight:900;
+
+    text-transform:uppercase;
+
+    letter-spacing:.4px;
+
+    background:#111;
+
+    border:
+
+        2px solid
+        var(--gold);
+
+    box-shadow:
+        5px 5px 0
+        var(--red);
+
+    transition:.3s;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.btn::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        linear-gradient(
+            120deg,
+            transparent,
+            rgba(255,255,255,.25),
+            transparent
+        );
+
+    transform:translateX(-120%);
+
+    transition:.6s;
+}
+
+.btn:hover::before{
+    transform:translateX(120%);
+}
+
+.btn:hover{
+
+    transform:
+        translate(
+            -3px,
+            -5px
+        );
+
+    box-shadow:
+        8px 8px 0
+        var(--gold);
+}
+
+.btn.gold{
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--gold),
+            #9f7d19
+        );
+
+    color:#080808;
+
+    border-color:#fff;
+
+    box-shadow:
+        5px 5px 0
+        var(--red);
+}
+
+.btn.red{
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--red),
+            #760008
+        );
+
+    border-color:var(--gold);
+
+}
+
+
+/* =====================================================
+   INFO STRIP
+===================================================== */
+
+.info-strip{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:10px;
+
+    margin-top:28px;
+}
+
+.info-box{
+
+    padding:12px;
+
+    background:#050505;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    color:#ddd;
+
+    font-size:.78rem;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    font-weight:700;
+}
+
+.info-box i{
+    color:var(--gold);
+}
+
+
+/* =====================================================
+   HERO IMAGE SIDE
+===================================================== */
+
+.hero-art{
+
+    min-height:580px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    position:relative;
+}
+
+/* =====================================================
+   PHOTO STAGE
+===================================================== */
+
+.photo-stage{
+
+    position:relative;
+
+    width:
+        min(
+            450px,
+            100%
+        );
+
+    height:540px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+}
+
+
+/* =====================================================
+   PHOTO CARD
+===================================================== */
+
+.photo-card{
+
+    position:relative;
+
+    width:360px;
+
+    height:470px;
+
+    padding:10px;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            var(--gold),
+            var(--red),
+            #111,
+            var(--gold)
+        );
+
+    box-shadow:
+
+        15px 15px 0
+        var(--red),
+
+        25px 25px 0
+        rgba(212,175,55,.5),
+
+        0 35px 80px
+        rgba(0,0,0,.7);
+
+    transform:
+
+        rotate(3deg);
+
+    animation:
+
+        photoFloat
+        5s
+        ease-in-out
+        infinite;
+
+    z-index:3;
+}
+
+
+/* black offset */
+
+.photo-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:15px -20px -20px 20px;
+
+    background:#111;
+
+    border:
+        2px solid
+        var(--gold);
+
+    transform:
+        rotate(-6deg);
+
+    z-index:-2;
+}
+
+
+/* red offset */
+
+.photo-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:-15px 15px 20px -20px;
+
+    border:
+        3px solid
+        var(--red);
+
+    transform:
+        rotate(8deg);
+
+    z-index:-3;
+}
+
+@keyframes photoFloat{
+
+    0%,100%{
+        transform:
+            translateY(0)
+            rotate(3deg);
+    }
+
+    50%{
+        transform:
+            translateY(-15px)
+            rotate(-2deg);
+    }
+}
+
+
+/* =====================================================
+   PROFILE IMAGE
+===================================================== */
+
+.profile-image{
+
+    width:100%;
+
+    height:100%;
+
+    overflow:hidden;
+
+    position:relative;
+
+    background:#000;
+
+    border:
+        5px solid
+        #050505;
+}
+
+.profile-image img{
+
+    width:100%;
+
+    height:100%;
+
+    display:block;
+
+    object-fit:cover;
+
+    transition:
+        transform
+        .7s
+        ease;
+}
+
+.photo-card:hover
+.profile-image img{
+
+    transform:
+        scale(1.07);
+}
+
+
+/* image overlay */
+
+.profile-image::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+        linear-gradient(
+            180deg,
+            transparent 60%,
+            rgba(0,0,0,.75)
+        );
+
+    pointer-events:none;
+}
+
+
+/* =====================================================
+   FLOATING TECH BOXES
+===================================================== */
+
+.float-chip{
+
+    position:absolute;
+
+    z-index:10;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:11px 15px;
+
+    background:#080808;
+
+    color:white;
+
+    border:
+        2px solid
+        var(--gold);
+
+    font-weight:900;
+
+    text-transform:uppercase;
+
+    box-shadow:
+
+        5px 5px 0
+        var(--red);
+
+    animation:
+        chipFloat
+        4s
+        ease-in-out
+        infinite;
+}
+
+.float-chip i{
+    color:var(--gold2);
+}
+
+.float-chip.ai{
+    top:35px;
+    right:0;
+}
+
+.float-chip.python{
+    top:145px;
+    left:-15px;
+
+    animation-delay:.5s;
+}
+
+.float-chip.web{
+    bottom:145px;
+    right:-20px;
+
+    animation-delay:1s;
+}
+
+.float-chip.java{
+    bottom:70px;
+    left:10px;
+
+    animation-delay:1.5s;
+}
+
+.float-chip.git{
+    top:270px;
+    left:-40px;
+
+    animation-delay:2s;
+}
+
+@keyframes chipFloat{
+
+    0%,100%{
+        transform:
+            translateY(0)
+            rotate(0deg);
+    }
+
+    50%{
+        transform:
+            translateY(-13px)
+            rotate(3deg);
+    }
+}
+
+
+/* =====================================================
+   COMIC BURST
+===================================================== */
+
+.comic-burst{
+
+    position:absolute;
+
+    width:430px;
+
+    height:430px;
+
+    background:
+
+        repeating-conic-gradient(
+            from 0deg,
+            rgba(229,9,20,.20) 0deg 8deg,
+            transparent 8deg 18deg
+        );
+
+    clip-path:
+        polygon(
+            50% 0,
+            60% 35%,
+            100% 20%,
+            70% 50%,
+            100% 80%,
+            60% 65%,
+            50% 100%,
+            40% 65%,
+            0 80%,
+            30% 50%,
+            0 20%,
+            40% 35%
+        );
+
+    animation:
+        burstSpin
+        25s
+        linear
+        infinite;
+
+    z-index:0;
+}
+
+@keyframes burstSpin{
+
+    to{
+        transform:
+            rotate(360deg);
+    }
+}
+
+
+/* =====================================================
+   SECTION HEADINGS
+===================================================== */
+
+.section-head{
+
+    margin-bottom:42px;
+
+    display:flex;
+
+    align-items:flex-end;
+
+    justify-content:space-between;
+
+    gap:25px;
+}
+
+.section-title span{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:9px;
+
+    padding:8px 14px;
+
+    background:#111;
+
+    color:var(--gold2);
+
+    border:
+        1px solid
+        var(--gold);
+
+    border-left:
+        4px solid
+        var(--red);
+
+    font-size:.75rem;
+
+    font-weight:900;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+    margin-bottom:14px;
+}
+
+.section-title h2{
+
+    font-size:
+        clamp(
+            2rem,
+            4vw,
+            3.2rem
+        );
+
+    color:white;
+
+    line-height:1.05;
+}
+
+.section-line{
+
+    flex:1;
+
+    height:3px;
+
+    min-width:120px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--red),
+            var(--gold),
+            transparent
+        );
+}
+
+
+/* =====================================================
+   CARDS
+===================================================== */
+
+.about-grid,
+.contact-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        1.1fr
+        .9fr;
+
+    gap:22px;
+}
+
+.card,
+.focus-card,
+.skill-card,
+.project-card,
+.edu-card,
+.timeline-card,
+.cert-slider{
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            #121212,
+            #080808
+        );
+
+    border:
+        1px solid
+        rgba(212,175,55,.2);
+
+    box-shadow:
+        10px 10px 0
+        rgba(229,9,20,.12),
+
+        0 25px 60px
+        rgba(0,0,0,.35);
+
+    transition:.4s;
+}
+
+.card:hover,
+.focus-card:hover,
+.skill-card:hover,
+.project-card:hover,
+.edu-card:hover,
+.timeline-card:hover{
+
+    transform:
+        translateY(-10px);
+
+    border-color:
+        var(--gold);
+
+    box-shadow:
+        8px 8px 0
+        rgba(229,9,20,.5),
+
+        0 35px 70px
+        rgba(0,0,0,.55);
+}
+
+.card{
+
+    padding:34px;
+
+    border-left:
+        5px solid
+        var(--red);
+}
+
+.card p{
+
+    color:#ccc;
+
+    line-height:1.85;
+}
+
+
+/* =====================================================
+   FOCUS
+===================================================== */
+
+.focus-grid{
+
+    display:grid;
+
+    gap:18px;
+}
+
+.focus-card{
+
+    padding:30px;
+
+    border-left:
+        4px solid
+        var(--gold);
+}
+
+.focus-card i{
+
+    width:60px;
+    height:60px;
+
+    display:grid;
+
+    place-items:center;
+
+    background:
+        var(--red);
+
+    color:white;
+
+    font-size:1.6rem;
+
+    margin-bottom:18px;
+
+    box-shadow:
+        5px 5px 0
+        var(--gold);
+}
+
+.focus-card h3{
+
+    margin-bottom:10px;
+}
+
+.focus-card p{
+
+    color:#aaa;
+
+    line-height:1.7;
+}
+
+
+/* =====================================================
+   GRIDS
+===================================================== */
+
+.skill-grid,
+.project-grid,
+.education-grid,
+.timeline{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(
+                260px,
+                1fr
+            )
+        );
+
+    gap:22px;
+}
+
+
+/* =====================================================
+   SKILLS
+===================================================== */
+
+.skill-card,
+.project-card,
+.edu-card,
+.timeline-card{
+
+    padding:28px;
+
+    border-top:
+        4px solid
+        var(--red);
+}
+
+.skill-card i,
+.project-card > i,
+.edu-card > i{
+
+    width:60px;
+
+    height:60px;
+
+    display:grid;
+
+    place-items:center;
+
+    background:#0a0a0a;
+
+    color:var(--gold);
+
+    border:
+        2px solid
+        var(--gold);
+
+    font-size:1.6rem;
+
+    margin-bottom:18px;
+
+    box-shadow:
+        5px 5px 0
+        var(--red);
+}
+
+.skill-card h3,
+.project-card h3,
+.edu-card h3,
+.timeline-card h3{
+
+    color:white;
+
+    margin-bottom:10px;
+}
+
+.skill-card p,
+.project-card p,
+.edu-card p{
+
+    color:#aaa;
+
+    line-height:1.7;
+}
+
+
+/* =====================================================
+   SKILL BAR
+===================================================== */
+
+.skill-bar{
+
+    height:8px;
+
+    background:#222;
+
+    margin-top:16px;
+
+    overflow:hidden;
+}
+
+.skill-fill{
+
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--red),
+            var(--gold)
+        );
+
+    animation:
+        fillSkill
+        1.8s
+        ease
+        forwards;
+}
+
+@keyframes fillSkill{
+
+    from{
+        width:0;
+    }
+}
+
+
+/* =====================================================
+   PROJECT
+===================================================== */
+
+.project-card{
+
+    min-height:320px;
+
+    display:flex;
+
+    flex-direction:column;
+}
+
+.project-points{
+
+    padding-left:18px;
+
+    margin:10px 0 18px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:7px;
+}
+
+.project-points li{
+
+    color:#bbb;
+
+    line-height:1.65;
+
+    font-size:.92rem;
+}
+
+.project-card .view-btn{
+
+    margin-top:auto;
+
+    align-self:flex-start;
+
+    padding:10px 20px;
+
+    text-decoration:none;
+
+    color:white;
+
+    background:
+        var(--red);
+
+    border:
+        1px solid
+        var(--gold);
+
+    font-weight:800;
+
+    transition:.3s;
+}
+
+.project-card .view-btn:hover{
+
+    background:
+        var(--gold);
+
+    color:#000;
+
+    transform:
+        translateY(-3px);
+}
+
+
+/* =====================================================
+   TIMELINE
+===================================================== */
+
+.timeline-card .badge{
+
+    display:inline-block;
+
+    padding:7px 12px;
+
+    background:
+        var(--gold);
+
+    color:#000;
+
+    font-size:.75rem;
+
+    font-weight:900;
+
+    margin-bottom:12px;
+}
+
+.timeline-card ul{
+
+    color:#bbb;
+
+    line-height:1.75;
+
+    padding-left:18px;
+}
+
+
+/* =====================================================
+   CERTIFICATIONS
+===================================================== */
+
+.cert-slider{
+
+    padding:22px;
+
+    overflow:hidden;
+}
+
+.cert-track{
+
+    display:flex;
+
+    width:max-content;
+
+    gap:22px;
+
+    animation:
+        slide
+        25s
+        linear
+        infinite;
+}
+
+.cert-slider:hover
+.cert-track{
+
+    animation-play-state:paused;
+}
+
+.cert-card{
+
+    width:320px;
+
+    min-height:220px;
+
+    padding:30px;
+
+    background:#0b0b0b;
+
+    border:
+        1px solid
+        var(--gold);
+
+    text-align:center;
+
+    box-shadow:
+        7px 7px 0
+        rgba(229,9,20,.5);
+}
+
+.cert-card i{
+
+    width:70px;
+
+    height:70px;
+
+    display:grid;
+
+    place-items:center;
+
+    margin:
+        0 auto 17px;
+
+    background:
+        var(--red);
+
+    color:white;
+
+    font-size:2rem;
+
+    border:
+        2px solid
+        var(--gold);
+}
+
+.cert-card span{
+
+    font-size:.75rem;
+
+    color:var(--gold2);
+
+    font-weight:900;
+}
+
+.cert-card h3{
+
+    margin:9px 0;
+
+    color:white;
+}
+
+.cert-card p{
+
+    color:#aaa;
+
+    line-height:1.65;
+}
+
+@keyframes slide{
+
+    to{
+        transform:
+            translateX(-50%);
+    }
+}
+
+
+/* =====================================================
+   CONTACT
+===================================================== */
+
+.contact-links a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:13px;
+
+    padding:15px;
+
+    margin:14px 0;
+
+    color:white;
+
+    text-decoration:none;
+
+    background:#080808;
+
+    border:
+        1px solid
+        rgba(212,175,55,.18);
+
+    transition:.3s;
+}
+
+.contact-links a:hover{
+
+    transform:
+        translateX(8px);
+
+    border-color:
+        var(--gold);
+
+    color:var(--gold2);
+}
+
+.contact-links i{
+
+    color:var(--red);
+}
+
+.quote-strip{
+
+    margin-top:26px;
+
+    padding:22px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--red),
+            #700008
+        );
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:18px;
+
+    border:
+        2px solid
+        var(--gold);
+}
+
+.quote-strip strong{
+    color:var(--gold2);
+}
+
+
+/* =====================================================
+   REVEAL ANIMATION
+===================================================== */
+
+.reveal{
+
+    opacity:0;
+
+    transform:
+        translateY(45px);
+
+    transition:
+        1s
+        cubic-bezier(.22,.61,.36,1);
+}
+
+.reveal.active{
+
+    opacity:1;
+
+    transform:
+        translateY(0);
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+
+    padding:28px 7%;
+
+    text-align:center;
+
+    color:#aaa;
+
+    background:#030303;
+
+    border-top:
+        1px solid
+        rgba(212,175,55,.2);
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:1050px){
+
+    .hero{
+
+        grid-template-columns:
+            1fr
+            380px;
+
+        gap:20px;
+    }
+
+    .hero-content{
+
+        padding:35px;
+    }
+
+    .hero h1{
+
+        font-size:
+            clamp(
+                2.5rem,
+                6vw,
+                4rem
+            );
+    }
+}
+
+
+@media(max-width:900px){
+
+    nav ul{
+        display:none;
+    }
+
+    .hero{
+
+        grid-template-columns:
+            1fr;
+
+        padding-top:120px;
+    }
+
+    .hero-art{
+
+        order:-1;
+
+        min-height:500px;
+    }
+
+    .hero-content{
+
+        order:2;
+    }
+
+    .about-grid,
+    .contact-grid{
+
+        grid-template-columns:1fr;
+    }
+
+    .info-strip{
+
+        grid-template-columns:1fr;
+    }
+
+    .section-head{
+
+        align-items:flex-start;
+
+        flex-direction:column;
+    }
+
+    .section-line{
+
+        width:220px;
+
+        flex:none;
+    }
+}
+
+
+@media(max-width:560px){
+
+    section{
+
+        padding:
+            85px 5%;
+    }
+
+    .hero{
+
+        padding-top:105px;
+    }
+
+    .hero-content{
+
+        padding:28px 22px;
+    }
+
+    .hero h1{
+
+        font-size:
+            2.5rem;
+    }
+
+    .photo-stage{
+
+        width:310px;
+
+        height:430px;
+    }
+
+    .photo-card{
+
+        width:270px;
+
+        height:370px;
+    }
+	.comic-burst{
+
+        width:400px;
+        height:400px;
+    }
+
+    .float-chip{
+
+        transform:scale(.82);
+    }
+
+    .float-chip.ai{
+
+        right:-5px;
+    }
+
+    .float-chip.python{
+
+        left:-10px;
+    }
+
+    .float-chip.web{
+
+        right:-10px;
+    }
+
+    .float-chip.java{
+
+        left:5px;
+    }
+
+    .float-chip.git{
+
+        left:-15px;
+    }
+
+
+    .float-chip{
+
+        display:none;
+    }
+
+    .cert-card{
+
+        width:270px;
+    }
+
+    .hero-actions{
+
+        flex-direction:column;
+    }
+
+    .btn{
+
+        justify-content:center;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     BACKGROUND
+===================================================== -->
+
+<div class="decor-orb one"></div>
+<div class="decor-orb two"></div>
+<div class="decor-orb three"></div>
+
+<!-- =====================================================
+     CURSOR
+===================================================== -->
+
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
+<nav>
+
+    <div class="logo">
+
+        <div class="logo-mark">
+            YK
+        </div>
+
+        <span>
+            B.Yaswanth Kumar
+        </span>
+
+    </div>
+
+
+    <ul>
+
+        <li>
+            <a href="#home">
+                Home
+            </a>
+        </li>
+
+        <li>
+            <a href="#about">
+                About
+            </a>
+        </li>
+
+        <li>
+            <a href="#skills">
+                Skills
+            </a>
+        </li>
+
+        <li>
+            <a href="#experience">
+                Experience
+            </a>
+        </li>
+
+        <li>
+            <a href="#education">
+                Education
+            </a>
+        </li>
+
+        <li>
+            <a href="#projects">
+                Projects
+            </a>
+        </li>
+
+        <li>
+            <a href="#certifications">
+                Certifications
+            </a>
+        </li>
+
+        <li>
+            <a href="#contact">
+                Contact
+            </a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section
+    class="hero"
+    id="home"
+>
+
+
+    <!-- =================================================
+         NAME / INTRODUCTION
+    ================================================== -->
+
+    <div
+        class="hero-content reveal"
+    >
+
+
+        <div class="hero-label">
+
+            <i class="fa-solid fa-graduation-cap"></i>
+
+            Computer Science Engineering Student
+
+        </div>
+
+
+        <h1>
+
+            Burri
+
+            <span>
+                Yaswanth Kumar
+            </span>
+
+        </h1>
+
+
+        <h3>
+
+            AI & ML Student
+            •
+            Python Programmer
+            •
+            Web Developer
+
+        </h3>
+
+
+        <p>
+
+            Motivated Computer Science Engineering student
+            specializing in Artificial Intelligence and
+            Machine Learning, with hands-on experience in
+            Python programming, responsive web development,
+            and ServiceNow application development.
+
+        </p>
+
+
+        <div class="hero-actions">
+
+
+            <a
+                href="#projects"
+                class="btn"
+            >
+
+                <i class="fa-solid fa-layer-group"></i>
+
+                View Projects
+
+            </a>
+
+
+            <a
+                href="https://www.linkedin.com/in/yaswanth-kumar-3226672b8/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn gold"
+            >
+
+                <i class="fa-brands fa-linkedin"></i>
+
+                LinkedIn
+
+            </a>
+
+
+            <a
+                href="https://github.com/B277YASWANTH/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn red"
+            >
+
+                <i class="fa-brands fa-github"></i>
+
+                GitHub
+
+            </a>
+
+
+        </div>
+
+
+        <div class="info-strip">
+
+
+            <div class="info-box">
+
+                <i class="fa-solid fa-envelope"></i>
+
+                yaswanthkumar8382@gmail.com
+
+            </div>
+
+
+            <div class="info-box">
+
+                <i class="fa-solid fa-code"></i>
+
+                CSE-AIML Student
+
+            </div>
+
+
+            <div class="info-box">
+
+                <i class="fa-solid fa-location-dot"></i>
+
+                Guntur, Andhra Pradesh
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =================================================
+         PROFILE IMAGE
+    ================================================== -->
+
+    <div
+        class="hero-art reveal"
+    >
+
+
+        <div
+            class="photo-stage"
+        >
+
+
+            <div class="comic-burst"></div>
+
+
+            <!-- FLOATING TECH BOXES -->
+
+
+            <div class="float-chip ai">
+
+                <i class="fa-solid fa-brain"></i>
+
+                AI / ML
+
+            </div>
+
+
+            <div class="float-chip python">
+
+                <i class="fa-brands fa-python"></i>
+
+                Python
+
+            </div>
+
+
+            <div class="float-chip web">
+
+                <i class="fa-solid fa-code"></i>
+
+                Web Dev
+
+            </div>
+
+
+            <div class="float-chip java">
+
+                <i class="fa-brands fa-java"></i>
+
+                Java
+
+            </div>
+
+
+            <div class="float-chip git">
+
+                <i class="fa-brands fa-git-alt"></i>
+
+                Git
+
+            </div>
+
+
+            <!-- PROFILE PHOTO -->
+
+
+            <div class="photo-card">
+
+
+                <div class="profile-image">
+
+
+                    <img
+                        src="Profile.jpeg"
+                        alt="Yaswanth Kumar"
+                    >
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     ABOUT
+===================================================== -->
+
+<section
+    id="about"
+    class="reveal"
+>
+
+
+    <div class="section-head">
+
+
+        <div class="section-title">
+
+            <span>
+
+                <i class="fa-solid fa-user"></i>
+
+                Profile
+
+            </span>
+
+
+            <h2>
+
+                Turning ideas into clean,
+                practical,
+                real-world solutions.
+
+            </h2>
+
+        </div>
+
+
+        <div class="section-line"></div>
+
+
+    </div>
+
+
+    <div class="about-grid">
+
+
+        <div class="card">
+
+            <p>
+
+                I am a Computer Science Engineering
+                student specializing in Artificial
+                Intelligence and Machine Learning.
+
+                I enjoy creating responsive web
+                applications, writing Python programs
+                for automation and problem-solving,
+                and learning technologies that solve
+                real-world problems.
+
+            </p>
+
+
+            <br>
+
+
+            <p>
+
+                My interests include AI/ML fundamentals,
+                data structures, web development,
+                ServiceNow workflows, and full-stack
+                development.
+
+                I am eager to contribute to innovative
+                projects while continuously improving
+                my technical expertise.
+
+            </p>
+
+        </div>
+
+
+        <div class="focus-grid">
+
+
+            <div class="focus-card">
+
+                <i class="fa-solid fa-rocket"></i>
+
+                <h3>
+                    Quick Learner
+                </h3>
+
+                <p>
+
+                    I actively learn new technologies
+                    and apply them in practical projects.
+
+                </p>
+
+            </div>
+
+
+            <div class="focus-card">
+
+                <i class="fa-solid fa-puzzle-piece"></i>
+
+                <h3>
+                    Problem Solver
+                </h3>
+
+                <p>
+
+                    I focus on analytical thinking,
+                    debugging, and building efficient
+                    solutions.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     SKILLS
+===================================================== -->
+
+<section
+    id="skills"
+    class="reveal"
+>
+
+
+    <div class="section-head">
+
+        <div class="section-title">
+
+            <span>
+
+                <i class="fa-solid fa-code"></i>
+
+                Technical Skills
+
+            </span>
+
+            <h2>
+                Tools and technologies I work with
+            </h2>
+
+        </div>
+
+        <div class="section-line"></div>
+
+    </div>
+
+
+    <div class="skill-grid">
+
+
+        <div class="skill-card">
+
+            <i class="fa-brands fa-python"></i>
+
+            <h3>
+                Python
+            </h3>
+
+            <p>
+                Programming, automation,
+                problem-solving, and debugging.
+            </p>
+
+            <div class="skill-bar">
+                <div
+                    class="skill-fill"
+                    style="width:88%"
+                ></div>
+            </div>
+
+        </div>
+
+
+        <div class="skill-card">
+
+            <i class="fa-brands fa-java"></i>
+
+            <h3>
+                Java
+            </h3>
+
+            <p>
+                Programming fundamentals
+                and application logic.
+            </p>
+
+            <div class="skill-bar">
+                <div
+                    class="skill-fill"
+                    style="width:78%"
+                ></div>
+            </div>
+
+        </div>
+
+
+        <div class="skill-card">
+
+            <i class="fa-solid fa-c"></i>
+
+            <h3>
+                C Programming
+            </h3>
+
+            <p>
+                Core programming concepts
+                and logical thinking.
+            </p>
+
+            <div class="skill-bar">
+                <div
+                    class="skill-fill"
+                    style="width:76%"
+                ></div>
+            </div>
+
+        </div>
+
+
+        <div class="skill-card">
+
+            <i class="fa-brands fa-html5"></i>
+
+            <h3>
+                HTML & CSS
+            </h3>
+
+            <p>
+                Responsive layouts,
+                UI styling, and modern web pages.
+            </p>
+
+            <div class="skill-bar">
+                <div
+                    class="skill-fill"
+                    style="width:90%"
+                ></div>
+            </div>
+
+        </div>
+
+
+        <div class="skill-card">
+
+            <i class="fa-brands fa-js"></i>
+
+            <h3>
+                JavaScript
+            </h3>
+
+            <p>
+                Interactive web features
+                and front-end logic.
+            </p>
+
+            <div class="skill-bar">
+                <div
+                    class="skill-fill"
+                    style="width:82%"
+                ></div>
+            </div>
+
+        </div>
+
+
+        <div class="skill-card">
+
+            <i class="fa-brands fa-react"></i>
+
+            <h3>
+                React & Node.js
+            </h3>
+
+            <p>
+                Modern web tools for
+                scalable applications.
+            </p>
+
+            <div class="skill-bar">
+                <div
+                    class="skill-fill"
+                    style="width:72%"
+                ></div>
+            </div>
+
+        </div>
+
+
+        <div class="skill-card">
+
+            <i class="fa-solid fa-database"></i>
+
+            <h3>
+                MySQL
+            </h3>
+
+            <p>
+                Database basics and
+                structured data handling.
+            </p>
+
+            <div class="skill-bar">
+                <div
+                    class="skill-fill"
+                    style="width:74%"
+                ></div>
+            </div>
+
+        </div>
+
+
+        <div class="skill-card">
+
+            <i class="fa-solid fa-robot"></i>
+
+            <h3>
+                Machine Learning Basics
+            </h3>
+
+            <p>
+                AI/ML concepts, analytical
+                thinking, and model fundamentals.
+            </p>
+
+            <div class="skill-bar">
+                <div
+                    class="skill-fill"
+                    style="width:75%"
+                ></div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     EXPERIENCE
+===================================================== -->
+
+<section
+    id="experience"
+    class="reveal"
+>
+
+
+    <div class="section-head">
+
+        <div class="section-title">
+
+            <span>
+
+                <i class="fa-solid fa-briefcase"></i>
+
+                Internship Experience
+
+            </span>
+
+            <h2>
+                Practical learning and industry exposure
+            </h2>
+
+        </div>
+
+        <div class="section-line"></div>
+
+    </div>
+
+
+    <div class="timeline">
+
+
+        <div class="timeline-card">
+
+            <span class="badge">
+                ServiceNow
+            </span>
+
+            <h3>
+                ServiceNow Developer Intern
+            </h3>
+
+            <ul>
+
+                <li>
+                    Developed ServiceNow applications
+                    using workflows, business rules,
+                    client scripts, and forms.
+                </li>
+
+                <li>
+                    Worked on Incident Management and
+                    Service Catalog modules.
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <div class="timeline-card">
+
+            <span class="badge">
+                Python
+            </span>
+
+            <h3>
+                Python Programming Intern
+            </h3>
+
+            <ul>
+
+                <li>
+                    Implemented Python programs
+                    for automation and problem-solving.
+                </li>
+
+                <li>
+                    Practiced real-time coding tasks
+                    and debugging.
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <div class="timeline-card">
+
+            <span class="badge">
+                Frontend
+            </span>
+
+            <h3>
+                Web Development Intern
+            </h3>
+
+            <ul>
+
+                <li>
+                    Developed responsive web pages
+                    using HTML, CSS, and JavaScript.
+                </li>
+
+                <li>
+                    Improved UI responsiveness
+                    and user experience.
+                </li>
+
+            </ul>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     EDUCATION
+===================================================== -->
+
+<section
+    id="education"
+    class="reveal"
+>
+
+
+    <div class="section-head">
+
+        <div class="section-title">
+
+            <span>
+
+                <i class="fa-solid fa-graduation-cap"></i>
+
+                Education
+
+            </span>
+
+            <h2>
+                Academic background
+            </h2>
+
+        </div>
+
+        <div class="section-line"></div>
+
+    </div>
+
+
+    <div class="education-grid">
+
+
+        <div class="edu-card">
+
+            <i class="fa-solid fa-building-columns"></i>
+
+            <h3>
+                B.Tech - CSE (AI & ML)
+            </h3>
+
+            <p>
+                Kallam Haranadhareddy Institute
+                of Technology
+            </p>
+
+            <p>
+                2023 - Present |
+                CGPA: <b>6.5</b>
+            </p>
+
+        </div>
+
+
+        <div class="edu-card">
+
+            <i class="fa-solid fa-school"></i>
+
+            <h3>
+                Intermediate
+            </h3>
+
+            <p>
+                Sri Chaitanya Junior College
+            </p>
+
+            <p>
+                2021 - 2023 |
+                CGPA: <b>7.0</b>
+            </p>
+
+        </div>
+
+
+        <div class="edu-card">
+
+            <i class="fa-solid fa-book-open"></i>
+
+            <h3>
+                SSC
+            </h3>
+
+            <p>
+                Bhashyam High School
+            </p>
+
+            <p>
+                2020 - 2021 |
+                CGPA: <b>10.0</b>
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PROJECTS
+===================================================== -->
+
+<section
+    id="projects"
+    class="reveal"
+>
+
+
+    <div class="section-head">
+
+        <div class="section-title">
+
+            <span>
+
+                <i class="fa-solid fa-diagram-project"></i>
+
+                Projects
+
+            </span>
+
+            <h2>
+                Selected work
+            </h2>
+
+        </div>
+
+        <div class="section-line"></div>
+
+    </div>
+
+
+    <div class="project-grid">
+
+
+        <div class="project-card">
+
+            <i class="fa-solid fa-id-card"></i>
+
+            <h3>
+                Portfolio Website
+            </h3>
+
+            <ul class="project-points">
+
+                <li>
+                    Built a fully responsive portfolio
+                    using HTML, CSS, and JavaScript.
+                </li>
+
+                <li>
+                    Showcases projects, skills,
+                    and achievements with animations.
+                </li>
+
+                <li>
+                    Optimized for different
+                    screen sizes.
+                </li>
+
+            </ul>
+
+            <a
+                href="http://saireddy-sm.github.io/MyPortfolio/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="view-btn"
+            >
+                View Live
+            </a>
+
+        </div>
+
+
+        <div class="project-card">
+
+            <i class="fa-solid fa-file-lines"></i>
+
+            <h3>
+                Smart Expenses Tracker
+            </h3>
+
+            <ul class="project-points">
+
+                <li>
+                    Track daily expenses and 
+		    manage spending records easily.
+                </li>
+
+                <li>
+                    Automatically calculate total 
+	            expenses and organize spending details.
+                </li>
+
+                <li>
+                    Built using HTML, CSS and JavaScript with a responsive interactive UI.
+                </li>
+
+            </ul>
+
+            <a
+                href="https://b277yaswanth.github.io/Smart_Expense_Tracker/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="view-btn"
+            >
+                View Live
+            </a>
+
+        </div>
+
+
+        <div class="project-card">
+
+            <i class="fa-solid fa-brain"></i>
+
+            <h3>
+                LoanWise EMI Calculator
+            </h3>
+
+            <ul class="project-points">
+
+                <li>
+                    Calculates monthly EMI, total interest
+                    and total loan repayment instantly.
+                </li>
+
+                <li>
+                    Provides detailed loan breakdown
+		    with principal and interest visualization.
+                </li>
+
+                <li>
+                    Built using HTML, CSS and JavaScript
+		    with responsive design and animations.
+                </li>
+
+            </ul>
+
+            <a
+                href="https://b277yaswanth.github.io/EMI_Calculator/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="view-btn"
+            >
+                View Live
+            </a>
+
+        </div>
+
+
+        <div class="project-card">
+
+            <i class="fa-solid fa-temperature-half"></i>
+
+            <h3>
+                Temperature Converter
+            </h3>
+
+            <ul class="project-points">
+
+                <li>
+                    Converts Celsius,
+                    Fahrenheit and Kelvin.
+                </li>
+
+                <li>
+                    Built using HTML,
+                    CSS and JavaScript.
+                </li>
+
+                <li>
+                    Includes input validation
+                    and real-time calculations.
+                </li>
+
+            </ul>
+
+            <a
+                href="https://saireddy-sm.github.io/OIBSIP_Web_Development_Internship/task3-temperature-converter/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="view-btn"
+            >
+                View Live
+            </a>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CERTIFICATIONS
+===================================================== -->
+
+<section
+    id="certifications"
+    class="reveal"
+>
+
+
+    <div class="section-head">
+
+        <div class="section-title">
+
+            <span>
+
+                <i class="fa-solid fa-award"></i>
+
+                Certifications
+
+            </span>
+
+            <h2>
+                Learning achievements
+            </h2>
+
+        </div>
+
+        <div class="section-line"></div>
+
+    </div>
+
+
+    <div class="cert-slider">
+
+
+        <div class="cert-track">
+
+
+            <div class="cert-card">
+
+                <i class="fa-solid fa-mobile-screen-button"></i>
+
+                <span>
+                    Mobile Development
+                </span>
+
+                <h3>
+                    Flutter Fundamentals
+                </h3>
+
+                <p>
+                    Tata NeuSkills certification
+                    focused on Flutter fundamentals
+                    and mobile development.
+                </p>
+
+            </div>
+
+
+            <div class="cert-card">
+
+                <i class="fa-solid fa-brain"></i>
+
+                <span>
+                    AI
+                </span>
+
+                <h3>
+                    Generative AI Leader
+                </h3>
+
+                <p>
+                    Certification covering
+                    Generative AI concepts
+                    and modern AI adoption.
+                </p>
+
+            </div>
+
+
+            <div class="cert-card">
+
+                <i class="fa-solid fa-layer-group"></i>
+
+                <span>
+                    Full Stack
+                </span>
+
+                <h3>
+                    Full Stack Development
+                </h3>
+
+                <p>
+                    Certification focused on
+                    full-stack development concepts.
+                </p>
+
+            </div>
+
+
+            <!-- duplicate cards for slider -->
+
+
+            <div class="cert-card">
+
+                <i class="fa-solid fa-mobile-screen-button"></i>
+
+                <span>
+                    Mobile Development
+                </span>
+
+                <h3>
+                    Flutter Fundamentals
+                </h3>
+
+                <p>
+                    Tata NeuSkills certification
+                    focused on Flutter fundamentals.
+                </p>
+
+            </div>
+
+
+            <div class="cert-card">
+
+                <i class="fa-solid fa-brain"></i>
+
+                <span>
+                    AI
+                </span>
+
+                <h3>
+                    Generative AI Leader
+                </h3>
+
+                <p>
+                    Certification covering
+                    Generative AI concepts.
+                </p>
+
+            </div>
+
+
+            <div class="cert-card">
+
+                <i class="fa-solid fa-layer-group"></i>
+
+                <span>
+                    Full Stack
+                </span>
+
+                <h3>
+                    Full Stack Development
+                </h3>
+
+                <p>
+                    Full-stack development
+                    concepts and application building.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CONTACT
+===================================================== -->
+
+<section
+    id="contact"
+    class="reveal"
+>
+
+
+    <div class="section-head">
+
+        <div class="section-title">
+
+            <span>
+
+                <i class="fa-solid fa-paper-plane"></i>
+
+                Contact
+
+            </span>
+
+            <h2>
+                Let's connect and collaborate
+            </h2>
+
+        </div>
+
+        <div class="section-line"></div>
+
+    </div>
+
+
+    <div class="contact-grid">
+
+
+        <div class="card contact-links">
+
+
+            <a
+                href="mailto:yaswanthkumar8382@gmail.com"
+            >
+
+                <i class="fa-solid fa-envelope"></i>
+
+                yaswanthkumaru8382@gmail.com
+
+            </a>
+
+
+            <a
+                href="https://www.linkedin.com/in/sai-reddy-0b08b23a0"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+
+                <i class="fa-brands fa-linkedin"></i>
+
+                LinkedIn Profile
+
+            </a>
+
+
+            <a
+                href="https://github.com/SaiReddy-sm/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+
+                <i class="fa-brands fa-github"></i>
+
+                GitHub Profile
+
+            </a>
+
+
+            <a href="#">
+
+                <i class="fa-solid fa-location-dot"></i>
+
+                Guntur, Andhra Pradesh, India
+
+            </a>
+
+
+        </div>
+
+
+        <div class="card">
+
+            <h3 style="color:white;">
+
+                Open to internships
+                and projects
+
+            </h3>
+
+
+            <p>
+
+                Interested in AI/ML projects,
+                Python development, responsive
+                web applications, ServiceNow
+                development, and full-stack
+                learning opportunities.
+
+            </p>
+
+
+            <div class="quote-strip">
+
+                <p>
+
+                    <strong>
+                        Strive for progress,
+                        not perfection.
+                    </strong>
+
+                    <br>
+
+                    Keep learning,
+                    keep building,
+                    keep growing.
+
+                </p>
+
+
+                <i
+                    class="fa-solid fa-quote-right"
+                ></i>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    © 2026
+    B.Yaswanth Kumar Portfolio.
+
+</footer>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+/* =====================================================
+   CURSOR TRACKING LOGIC (FIXED)
+===================================================== */
+const cursorDot = document.getElementById('cursorDot');
+const cursorRing = document.getElementById('cursorRing');
+
+window.addEventListener('mousemove', (e) => {
+    const posX = e.clientX;
+    const posY = e.clientY;
+
+    // Direct movement for the dot
+    cursorDot.style.left = `${posX}px`;
+    cursorDot.style.top = `${posY}px`;
+
+    // Ring follows with a tiny lag if desired, or direct
+    cursorRing.style.left = `${posX}px`;
+    cursorRing.style.top = `${posY}px`;
+});
+
+// Add hover effect for all interactive elements
+const interactives = document.querySelectorAll('a, button, .btn, .card, .focus-card, .skill-card, .project-card, .edu-card, .timeline-card');
+
+interactives.forEach(el => {
+    el.addEventListener('mouseenter', () => cursorRing.classList.add('active'));
+    el.addEventListener('mouseleave', () => cursorRing.classList.remove('active'));
+});
+
+
+/* =====================================================
+   SCROLL REVEAL
+===================================================== */
+
+const reveals =
+    document.querySelectorAll(
+        '.reveal'
+    );
+
+
+if(
+    'IntersectionObserver'
+    in window
+){
+
+    const observer =
+        new IntersectionObserver(
+
+            entries => {
+
+                entries.forEach(
+
+                    entry => {
+
+                        if(
+                            entry.isIntersecting
+                        ){
+
+                            entry.target
+                                .classList
+                                .add(
+                                    'active'
+                                );
+
+                        }
+
+                    }
+
+                );
+
+            },
+
+            {
+                threshold:.15
+            }
+
+        );
+
+
+    reveals.forEach(
+        item =>
+        observer.observe(item)
+    );
+
+}
+else{
+
+    reveals.forEach(
+        item =>
+        item.classList.add(
+            'active'
+        )
+    );
+
+}
+
+
+/* =====================================================
+   CARD MOUSE EFFECT
+===================================================== */
+
+document
+.querySelectorAll(
+    '.card,.focus-card,.skill-card,.project-card,.edu-card,.timeline-card'
+)
+.forEach(
+
+    card => {
+
+        card.addEventListener(
+            'mousemove',
+            e => {
+
+                const rect =
+                    card.getBoundingClientRect();
+
+                card.style.setProperty(
+                    '--mx',
+                    `${e.clientX - rect.left}px`
+                );
+
+                card.style.setProperty(
+                    '--my',
+                    `${e.clientY - rect.top}px`
+                );
+
+            }
+        );
+
+    }
+
+);
+
+
+/* =====================================================
+   RANDOM FLOATING CHIP MOVEMENT
+===================================================== */
+
+document
+.querySelectorAll(
+    '.float-chip'
+)
+.forEach(
+
+    chip => {
+
+        const randomX =
+            (Math.random() * 12) - 6;
+
+        const randomDelay =
+            Math.random() * 2;
+
+        chip.style.animationDelay =
+            `${randomDelay}s`;
+
+        chip.style.setProperty(
+            '--random-x',
+            `${randomX}px`
+        );
+
+    }
+
+);
+
+</script>
+
+
+</body>
+</html>
